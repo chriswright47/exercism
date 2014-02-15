@@ -19,7 +19,7 @@ SpaceAge = Struct.new(:seconds) do
   }
 
   PLANETS.each do |planet|
-    define_method("on_#{planet[0]}".to_sym) do
+    define_method("on_#{planet[0]}") do
       (earth_age / planet[1]).round(2)
     end
   end
