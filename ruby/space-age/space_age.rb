@@ -18,9 +18,9 @@ SpaceAge = Struct.new(:seconds) do
     neptune: 164.79132
   }
 
-  PLANETS.each do |planet|
-    define_method("on_#{planet[0]}") do
-      (earth_age / planet[1]).round(2)
+  PLANETS.each do |name, ratio|
+    define_method("on_#{name}") do
+      (earth_age / ratio).round(2)
     end
   end
 
