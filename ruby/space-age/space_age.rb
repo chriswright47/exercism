@@ -1,4 +1,11 @@
-SpaceAge = Struct.new(:seconds) do
+class SpaceAge
+
+  attr_reader :seconds
+
+  def initialize(seconds)
+    @seconds = seconds
+  end
+
   def earth_age
     (seconds / seconds_in_a_year)
   end
