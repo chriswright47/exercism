@@ -2,7 +2,7 @@ class PhoneNumber
   attr_accessor :number
 
   def initialize(number)
-    @number = number.scan(/\d/).join
+    @number = number.scan(/\w/).join
     validate_number
   end
 
@@ -16,7 +16,7 @@ class PhoneNumber
   end
 
   def invalid_number?
-    number.length != 10
+    number.length != 10 || number.scan(/\d/).length != 10
   end
 
   def to_s
