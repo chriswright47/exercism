@@ -5,15 +5,20 @@ class Triangle
   end
 
   def kind
-    if sides[0] + sides[1] <= sides[2] || sides.find {|x| x <= 0}
-      raise TriangleError
-    elsif sides.reverse == sides
+    raise TriangleError if invalid_triangle?
+    case sides.uniq.length
+    when 1
       :equilateral
-    elsif sides.uniq != sides
+    when 2
       :isosceles
     else
       :scalene
     end
+  end
+
+  private
+  def invalid_triangle?
+    sides[0] + sides[1] <= sides[2] || sides.find {|x| x <= 0}
   end
 
 end
