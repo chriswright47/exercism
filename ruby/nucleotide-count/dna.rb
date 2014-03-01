@@ -1,26 +1,25 @@
 class DNA
   attr_reader :strand
-  def invalid_nucleotide
-    /[^GCTAU]/
-  end
 
-  def check_input(input)
-    raise ArgumentError if invalid_nucleotide =~ input
+  INVALID_NUCLEOTIDE = /[^GCTAU]/
+
+  def invalid?(input)
+    INVALID_NUCLEOTIDE =~ input
   end
 
   def initialize(strand)
-    check_input(strand)
+    raise ArgumentError if invalid?(strand)
     @strand = strand
   end
 
   def count(nucleotide)
-    check_input(nucleotide)
-    self.nucleotide_counts[nucleotide]
+    raise ArgumentError if invalid?(nucleotide)
+    nucleotide_counts[nucleotide]
   end
 
   def nucleotide_counts
     counts = {'A' => 0, 'T' => 0, 'C' => 0, 'G' => 0}
-    self.strand.split('').each do |nucleotide|
+    strand.split('').each do |nucleotide|
       counts[nucleotide] += 1
     end
     counts
