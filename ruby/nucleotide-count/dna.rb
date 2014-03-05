@@ -19,7 +19,7 @@ class DNA
 
   def nucleotide_counts
     counts = {'A' => 0, 'T' => 0, 'C' => 0, 'G' => 0}
-    strand.split('').each do |nucleotide|
+    strand.each_char do |nucleotide|
       counts[nucleotide] += 1
     end
     counts
